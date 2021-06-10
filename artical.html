@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رحيق النحو | كل ما تريد تعلمه عن النحو</title>
+    <!-- Css Font links -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <!-- font awesome library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="./css/artical.css">
+</head>
+
+<body>
+    <div id="loader"></div>
+    <div id="go"></div>
+    <div class="afterloader">
+        <nav style="background-color: #eeefff;" dir="rtl" class="navbar fixed-top navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./index.html">
+                    <img style="width: 105px;" id="personal" src="./images/public/logo.png">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse mr-4" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-4 ml-auto">
+                        <li class="nav-item active ml-4"> <a class="nav-link" href="./index.html">الصفحة الرئيسية <span class="sr-only">(current)</span></a></li>
+                        <li class="nav-item ml-4"> <a class="nav-link" href="./index.html#lessonsData"> تصفح دروسنا</a></li>
+                        <li class="nav-item ml-4"> <a class="nav-link" href="./index.html#courseData">دوراتنا</a></li>
+                        <li id="ifAuthenticated" class="nav-item ml-4"><a class="nav-link" href="./QA.html">الأسئلة</a></li>
+                    </ul>
+                    <div id="adding"></div>
+                </div>
+            </div>
+
+        </nav>
+        <!-- The Header part  -->
+        <!-- -------------------------------------------------------------------------- -->
+        <div class="container artical-container" style="margin-bottom: 2em;">
+
+        </div>
+        <!-- ./artical-container -->
+        <!-- -------------------------------------------------------------------------- -->
+        <footer class="text-center text-white" style="background:url('https://images.unsplash.com/photo-1592278423578-4b83c89859ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80'),
+    linear-gradient(to right bottom,#eeefff,black);background-size: cover; background-position-y: center;background-blend-mode: overlay;">
+            <!-- <div class="container p-4 pb-0">
+            <h3 class="text-dark">تواصل معنا</h3>
+          <section class="mb-4">
+            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-google"></i>
+            </a>
+            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-instagram"></i>
+            </a>
+          </section>
+        </div> -->
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: #eeefff;">
+                <p class="text-dark">جميع الحقوق محفوظة &copy; رحيق النحو
+                </p>
+            </div>
+        </footer>
+        <a href="#go" id="goUp"><i class="fas fa-arrow-alt-circle-up"></i>
+
+    </div>
+
+    <div class="load">
+        
+        <span></span>
+    </div>
+    </a>
+        <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+        <!-- TODO: Add SDKs for Firebase products that you want to -->
+        <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-storage.js"></script>
+
+        <!-- bootstrap -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="./scripts/back/init.js"></script>
+        <script src="./scripts/front/artical.js"></script>
+</body>
+
+</html>

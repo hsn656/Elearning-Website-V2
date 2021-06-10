@@ -1,0 +1,193 @@
+
+/* General */
+
+
+
+body{
+    /* height: 100vh; */
+    align-items: center;
+    justify-content: center;
+    direction: rtl;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('1.jpeg') no-repeat;
+    /* height: 100%; */
+    background-color: #ccc;
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    font-family: 'Tajawal', sans-serif;
+
+}
+
+
+.card{
+    overflow: hidden;
+    border: 0 !important;
+    border-radius: 20px ;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-body{
+    padding: 2rem;
+}
+
+.title{
+    margin-bottom: 2rem;
+}
+
+.form-input{
+    position: relative;
+}
+
+.form-input input{
+    width: 100%;
+    height: 45px;
+    padding-right: 40px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    box-shadow: none;
+    border :1px solid #00000020;
+    border-radius: 50px;
+    outline: none;
+    background: transparent;
+    direction: rtl;
+}
+
+.form-input span{
+    position: absolute;
+    top: 10px;
+    padding-right: 15px;
+    color:#007bff;
+}
+
+.form-input input::placeholder{
+    color: black;
+    padding-left: 0px;
+}
+
+.form-input input:focus,
+.form-input input:valid{
+    border: 2px solid #007bff;
+}
+
+.form-input input:focus::placeholder{
+    color:#454b69;
+}
+
+.custom-radio {
+    float: right;
+}
+
+.custom-checkbox .custom-control-input:checked
+~ custom-control-lable::before{
+    background-color: #007bff !important;
+    border: 0px;
+}
+
+.form-box button[type="submit"]{
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    background :#007bff;
+    color: #fff;
+    font-size: 90%;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    transition: 0.5s;
+    padding: 12px;
+}
+
+.form-box button[type="submit"]:hover{
+    background: #0069d9;
+}
+
+.forget-link , .register-link{
+    color: #007bff;
+    font-weight: bold;
+}
+
+.forget-link:hover , .register-link:hover{
+    color: #0069d9;
+    text-decoration: none;
+}
+
+.form-box .btn-social{
+    color:white;
+    border: 0;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.form-box .btn-facebook{
+    background: #4866a8;
+}
+
+.form-box .btn-google{
+    background: #da3f34;
+}
+
+.form-box .btn-twitter{
+    background: #33ccff;
+}
+
+.form-box .btn-facebook:hover{
+    background: #3d578f;
+    color: white;
+}
+
+.form-box .btn-google:hover{
+    background: #bf3b31;
+    color: white;
+}
+
+.form-box .btn-twitter:hover{
+    background: #2eb7e5;
+    color: white;
+}
+
+
+
+/* ---------------------------------------------------------------------- */
+.con{   
+    color: white;
+}
+
+
+@media (max-width:768px){
+    .con{
+        display: none;
+    }
+}
+
+
+
+
+
+/* loader */
+.afterloader{
+    display: none;
+}
+#loader {
+    border: 16px solid transparent;
+    border-radius: 50%;
+    border-top: 16px solid #5bc0de;
+    border-bottom: 16px solid #5bc0de;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 40%;
+    left: 45%;
+  }
+
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+

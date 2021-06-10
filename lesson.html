@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Css Font links -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <!-- font awesome library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+
+    <!-- bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- css style file -->
+    <link rel="stylesheet" href="./css/lessonStyle.css">
+    <link rel="stylesheet" href="./css/videostyle.css">
+    <title>رحيق النحو | كل ما تريد تعلمه عن النحو</title>
+    <!-- moment js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-storage.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-functions.js"></script> -->
+    <script src="./scripts/back/init.js"></script>
+    <!-- <script src="./scripts/back/chat.js"></script> -->
+</head>
+
+<body>
+    <div id="loader"></div>
+    <div id="go"></div>
+    <div class="afterloader">
+        <!-- The Header part  -->
+        <nav style="background-color: #eeefff;" dir="rtl" class="navbar fixed-top navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./index.html">
+                    <img style="width: 105px;" id="personal" src="./images/public/logo.png">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse mr-4" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-4 ml-auto">
+                        <li class="nav-item active ml-4"> <a class="nav-link" href="./index.html">الصفحة الرئيسية <span class="sr-only">(current)</span></a></li>
+                        <li class="nav-item ml-4"> <a class="nav-link" href="./index.html#lessonsData"> تصفح دروسنا</a></li>
+                        <li class="nav-item ml-4"> <a class="nav-link" href="./index.html#courseData">دوراتنا</a></li>
+                        <li id="ifAuthenticated" class="nav-item ml-4"><a class="nav-link" href="./QA.html">الأسئلة</a></li>
+                    </ul>
+                    <div id="adding"></div>
+                </div>
+            </div>
+
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-sm-12">
+                    <div class="course-link p-3 text-right" onclick="toggleLessons()">
+                        <h2 style="display: inline-block;">المحاضرة الأولى</h2>
+                        <i style="left: 18px;position: absolute;top: 95px;" class=" list-toggle px-3 fa fa-align-justify"></i>
+                    </div>
+                    <div class="sidebar lesson-collection hide-lessons">
+                        <ul class="lessons-list nav nav-sidebar" style="display: block;text-align: right;">
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-9 col-sm-12 main">
+                    <!-- leeson section -->
+                    <div class="lesson-section">
+                        <div class="lesson-video">
+                            <h2 class="lesson-title"></h2>
+                            <p>هذا الفيديو تابع
+                                <a id="courseName" href="#"></a>
+                            </p>
+                            <div class="video-container">
+                                <div id="myvideos" class="videos">
+                                    <div id="videoBody" class="video-body"></div>
+                                    <div id="contolBox" class="video-control">
+                                        <span id="vDuration">00:00:00</span>
+                                        <span id="vPlay"><i class="fa fa-play"></i></span>
+                                        <span id="vPause"><i class="fa fa-pause"></i></span>
+
+                                        <input id="progressBar" type="range" min="1" max="100">
+                                        <span id="vMute"><i class="fa fa-volume-off"></i></span>
+                                        <span id="vUnmute"><i class="fa fa-volume-up"></i></span>
+                                        <span class="settings-box"><i id="settingsBox" class=" fa fa-cog"> </i>
+                                            <div id="settings" class="settings hide">
+
+
+                                                <select name="speed" id="speed">
+                                                    <option value="1" selected>1</option>
+                                                    <option value="1.25" selected>1.25</option>
+                                                    <option value="1.5">1.5</option>
+                                                    <option value="1.75">1.75</option>
+                                                    <option value="2">2</option>
+                                                </select>
+                                                <span>سرعة التشغيل</span>
+                                    </div>
+                                    </span>
+                                    <span id="vNormalScreen"><i class="fa fa-compress"></i></span>
+                                    <span id="vFullScreen"><i class="fa fa-expand "></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ./overview-comments -->
+                    <!-- overview  -->
+
+                    <!-- comments -->
+                    <div style="border: 2px solid; padding: 1em; margin: 3em auto; text-align: right;" class="comments">
+                        <h2>التعليقات</h2>
+                        <div id="comments">
+                            <!-- <div style="display: flex;" class="comment">
+                <img src="./images/public/profile.png" style="width: 4%;height: 30%;" alt="">
+                <h4 style="margin: 0.5em;">محمد محمد</h4>
+                <p style="margin: 0.5em;">بيلا للاف ى</p>
+            </div> -->
+
+                        </div>
+                        <input onkeypress="sendComment(event)" type="text" id="commentMessage" placeholder="اكتب تعليقك ثم اضغط على زر enter">
+
+                    </div>
+                    <!-- ./comments -->
+                </div>
+                <!-- ./lesson-section -->
+            </div>
+        </div>
+    </div>
+    <footer class="text-center text-white" style="background:url('https://images.unsplash.com/photo-1592278423578-4b83c89859ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80'),
+        linear-gradient(to right bottom,#eeefff,black);background-size: cover; background-position-y: center;background-blend-mode: overlay;">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: #eeefff;">
+            <p class="text-dark">جميع الحقوق محفوظة &copy; رحيق النحو
+            </p>
+        </div>
+    </footer>
+    </div>
+
+
+    <script src="./scripts/back/lesson.js"></script>
+
+    <script src="./scripts/back/video.js"></script>
+
+    <script>
+        function toggleLessons() {
+
+
+            let lessons = document.getElementsByClassName("lesson-collection")
+
+            for (let i = 0; i < lessons.length; i++) {
+                lessons[i].classList.toggle("hide-lessons")
+            }
+
+
+        }
+
+        function sendComment(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                sendData(event.target.value);
+                event.target.value = '';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

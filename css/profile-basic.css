@@ -1,0 +1,180 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Tajawal', sans-serif;
+    /* height: 5000px; */
+}
+
+.bg-cusGray{
+    background-color: #F7FAFC;
+}
+
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all .15s ease;
+}
+
+.header {
+    position: relative;
+}
+
+.opacity-8 {
+    opacity: .8 !important;
+}
+  
+.opacity-8 {
+    opacity: .9 !important;
+}
+
+
+.bg-gradient-default {
+    background: linear-gradient(87deg, #172b4d 0, #1a174d 100%) !important;
+}
+  
+.bg-gradient-default {
+    background: linear-gradient(87deg, #172b4d 0, #1a174d 100%) !important;
+}
+  
+  @media screen and (prefers-reduced-motion: reduce) {
+    .mask {
+      transition: none;
+    }
+}
+.body_position{
+    top: 69%;
+}
+.index{
+    z-index: 1000;
+}
+.btnn {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    color: white;
+    background-color: #007BFF;
+    font-size: 16px;
+    /* background-color: transparent; */
+    padding: 6px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+/* .btnn:hover {
+    background-color: #007BFF;
+    transition: all 1s;
+    
+  } */
+
+  .signin-signup{
+    width: 45%;
+    direction: ltr;
+}
+#signin , #signup{
+    outline: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 25px;
+    transition: all .6s;
+    cursor: pointer;
+}
+#signin{
+    border: 1px solid #555;
+    color: #555;
+    background: transparent;
+}
+#signup{
+    border: 0;
+    margin-left: 5px;
+    background: #00adb5;
+    color: #fff;
+}
+#signin:hover , #signup:hover{
+    background:#132c33 ;
+    color: #fff;
+}
+
+.signout {
+    width: 45%;
+    direction: ltr;
+}
+
+#signout {
+    outline: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 25px;
+    transition: all .6s;
+    cursor: pointer;
+}
+
+.signout img {
+    width: 8%;
+    height: 30%;
+    margin-left: 10px;
+}
+
+.signout #profileEmail {
+    color: #00adb5;
+    font-weight: bold;
+}
+
+#signout {
+    border: 1px solid #555;
+    color: #555;
+}
+
+#signout:hover {
+    background: #132c33;
+    color: #fff;
+}
+
+/* loader */
+.afterloader{
+    display: none;
+}
+#loader {
+    border: 16px solid transparent;
+    border-radius: 50%;
+    border-top: 16px solid #5bc0de;
+    border-bottom: 16px solid #5bc0de;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    transition: all 2s;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+@media screen and (max-width: 769px) {
+    #navbarNavDropdown>ul{
+        text-align: right;
+    }
+    #adding{
+        float: right;
+        margin-left: 1.5em;
+
+    }
+  }

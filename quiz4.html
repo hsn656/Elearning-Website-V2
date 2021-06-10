@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="keywords" content="">
+    <meta name="descrption" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رحيق النحو | الاختبار</title>
+    <!-- Css Font links -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <!-- font awesome library -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-storage.js"></script>
+    <script src="./scripts/back/init.js"></script>
+
+    <!-- font awesome library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
+    <!-- css style link  -->
+    <link rel="stylesheet" href="css/quiz Style.css">
+    
+</head>
+
+<body class="bg-dark">
+    <div id="loader"></div>
+    <div id="go"></div>
+    <div class="afterloader">
+        <nav style="background-color: #eeefff;" dir="rtl" class="navbar fixed-top navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./index.html">
+                    <img style="width: 105px;" id="personal" src="./images/public/logo.png">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse mr-4" id="navbarNavDropdown">
+                  <ul class="navbar-nav ml-4 ml-auto">
+                    <li class="nav-item active ml-4"> <a class="nav-link" href="./index.html">الصفحة الرئيسية <span class="sr-only">(current)</span></a></li>
+                    <li class="nav-item ml-4"> <a class="nav-link" href="./index.html#lessonsData"> تصفح دروسنا</a></li>
+                    <li class="nav-item ml-4"> <a class="nav-link" href="./index.html#courseData">دوراتنا</a></li>
+                  </ul>
+                  <div id="adding"></div>
+                </div>
+            </div>
+    
+          </nav>
+          <!-- The Header part  -->
+
+          <div style="margin-top: 6em !important;" class="container mt-5 ">
+            <div class="row d-flex justify-content-center">
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4  bg-light">
+                        <div class="card-header text-center text-dark ">
+                            <h2 class="quiz-title"></h2>
+                            <p class="text-center text-dark pt-2 h-5 ">عدد الأسئلة عشرون سؤالا</p>
+                            <h2 id="resultContent" class="hide result">النتيجة <span id="result">۲۰</span> من <span id="fulldegree"> ۲۰</span></h2>
+
+                        </div>
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark ">السؤال الاول</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(ذهبت إلى مساجد المدينة)، كلمة مساجد مجرورة؟</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q1a1">بالفتحة</label>
+                                <input name="q1" id="q1a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q1a2">بالكسرة</label>
+                                <input data-answer="true" name="q1" id="q1a2" type="radio">
+                            </div>
+    
+                        </div>
+                    </div>
+    
+    
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال الثاني</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(ذهبت إلى مساجد كثيرة)، كلمة مساجد مجرورة؟</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q2a1">بالفتحة</label>
+                                <input name="q2" id="q1a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q2a2">بالكسرة</label>
+                                <input data-answer="true" name="q2" id="q2a2" type="radio">
+                            </div>
+    
+                        </div>
+                    </div>
+    
+    
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال الثالث</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(يجب عليك أن تجتهد لإعلاء شأن مصر)، ما محل المصدر
+                                    المؤول؟</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q3a1">نصب مفعول به</label>
+                                <input name="q3" id="q3a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q3a2">رفع الفاعل</label>
+                                <input data-answer="true" name="q3" id="q3a2" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q3a3">رفع مبتدأ مؤخر</label>
+                                <input name="q3" id="q3a3" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q3a4">جر مضاف اليه</label>
+                                <input  name="q3" id="q3a4" type="radio">
+                            </div>
+    
+                        </div>
+                    </div>
+    
+    
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال الرابع</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(يجب عليك أن تجتهد لإعلاء شأن مصر)، ما إعراب
+                                    (لإعلاء)؟</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q4a1">جر ومجرو</label>
+                                <input name="q4" id="q4a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q4a2">مفعول لاجله</label>
+                                <input data-answer="true" name="q4" id="q4a2" type="radio">
+                            </div>
+    
+                        </div>
+                    </div>
+    
+    
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال الخامس</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(يجب عليك أن تجتهد لإعلاء شأن مصر)، ما إعراب
+                                    (ِشأن)؟</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q5a1"> مفعول به</label>
+                                <input name="q5" id="q5a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q5a2"> الفاعل</label>
+                                <input data-answer="true" name="q5" id="q5a2" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q5a3"> مبتدأ مؤخر</label>
+                                <input name="q5" id="q5a3" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q5a4"> مضاف اليه</label>
+                                <input name="q5" id="q5a4" type="radio">
+                            </div>
+    
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال السادس</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(أحب أن أذهب وحدي إلى المدرسة)، ما إعراب وحدي؟
+                                </h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q6a1"> حال</label>
+                                <input name="q6" id="q6a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q6a2"> توكيد</label>
+                                <input name="q6" id="q6a2" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q6a3"> مفعول بيه</label>
+                                <input data-answer="true" name="q6" id="q6a3" type="radio">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال السابع</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(أحب أن أذهب وحدي إلى المدرسة)، ما محل المصدر
+                                    المؤول؟</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q7a1"> رفع الفاعل</label>
+                                <input name="q7" id="q7a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q7a2"> جرب مضاف اليه</label>
+                                <input data-answer="true" name="q7" id="q7a2" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q7a3"> رفع مفعول بيه </label>
+                                <input name="q7" id="q7a3" type="radio">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال الثامن</p>
+                                <h3 class="quistion-name text-dark py-2 h5">أي الكلمات التالية ليس ممنوعا من الصرف</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q8a1">متاحف</label>
+                                <input name="q8" id="q8a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q8a2"> سجاجيد</label>
+                                <input data-answer="true" name="q8" id="q8a2" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q8a3">تلامذة </label>
+                                <input name="q8" id="q8a3" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q8a4">اغاني </label>
+                                <input name="q8" id="q8a4" type="radio">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال التاسع</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(لكل شخص نقطة ضعف)، ما إعراب ضعف؟</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q9a1"> نعت </label>
+                                <input name="q9" id="q9a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q9a2"> مضاف اليه</label>
+                                <input data-answer="true" name="q9" id="q9a2" type="radio">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال العاشر</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(أحبك مؤديا واجبك)، ما إعراب واجبك؟</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q10a1"> الفاعل</label>
+                                <input name="q10" id="q10a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q10a2"> جرب مضاف اليه</label>
+                                <input data-answer="true" name="q10" id="q10a2" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q10a3"> مفعول بيه </label>
+                                <input name="q10" id="q10a3" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q10a4"> نائب فاعل </label>
+                                <input name="q10" id="q10a4" type="radio">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال الحادي عشر</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(المتفوق ممنوح جائزة)، ما إعراب جائزة؟</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q11a1"> نائب الفاعل</label>
+                                <input name="q11" id="q11a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q11a2"> فاعل</label>
+                                <input data-answer="true" name="q11" id="q11a2" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q11a3"> مفعول بيه </label>
+                                <input name="q11" id="q11a3" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q11a4"> نائب مفعول بيه </label>
+                                <input name="q11" id="q11a4" type="radio">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال الثاني عشر</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(أستاذك رقيق قلبه)، ما إعراب قلبه؟</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q12a2"> الفاعل</label>
+                                <input name="q12" id="q12a2" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q12a2"> مضاف اليه</label>
+                                <input data-answer="true" name="q12" id="q12a2" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q12a3"> مفعول بيه </label>
+                                <input name="q12" id="q12a3" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q12a4"> بدل </label>
+                                <input name="q12" id="q12a4" type="radio">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال الثالث عشر</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(الهاتف مستخدم بواسطتي) نوع المشتق في مستخدم؟</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q13a1"> اسم فاعل</label>
+                                <input name="q13" id="q13a1" type="radio">
+                            </div>
+    
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q13a2"> مفعول </label>
+                                <input data-answer="true" name="q13" id="q13a2" type="radio">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال الرابع عشر</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(انكسار - إبهار - تطوير - محسن - تحسين - تَقدُّم -
+                                    اختراق - مروحة)، كم عدد المصادر الرباعية فيما سبق؟</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q14a1">ثلاثة </label>
+                                <input name="q14" id="q14a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q14a2"> اربعة </label>
+                                <input data-answer="true" name="q14" id="q14a2" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q14a3"> خمسة </label>
+                                <input name="q14" id="q14a3" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q14a4"> ستة </label>
+                                <input name="q14" id="q14a4" type="radio">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال الخامس عشر</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(انكسار - إبهار - تطوير - محسن - تحسين - تَقدُّم -
+                                    اختراق - مروحة)، كم عدد المصادر الخماسية؟</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q15a1">ثلاثة </label>
+                                <input name="q15" id="q15a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q15a2"> اربعة </label>
+                                <input name="q15" id="q15a2" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q15a3"> خمسة </label>
+                                <input name="q15" id="q15a3" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q15a4"> ستة </label>
+                                <input data-answer="true" name="q15" id="q15a4" type="radio">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال السادس عشر</p>
+                                <h3 class="quistion-name text-dark py-2 h5"> (محمد كاتب درسه أمس)، ما إعراب درسه؟</h3>
+                            </div>
+    
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q16a1"> مضاف اليه</label>
+                                <input data-answer="true" name="q16" id="q16a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q16a2"> مفعول بيه </label>
+                                <input name="q16" id="q16a2" type="radio">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark"> السؤال السابع عشر</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(هو قاتل أبيك)، ما إعراب أبيك؟</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q17a1"> مضاف اليه</label>
+                                <input name="q17" id="q17a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q17a2"> مفعول بيه </label>
+                                <input data-answer="true" name="q17" id="q17a2" type="radio">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال الثامن عشر</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(هو قاتل أباك، ما إعراب أباك؟</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q18a1"> مضاف اليه</label>
+                                <input data-answer="true" name="q18" id="q18a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q18a2"> مفعول بيه </label>
+                                <input name="q18" id="q18a2" type="radio">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+    
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال التاسع عشر</p>
+                                <h3 class="quistion-name text-dark py-2 h5">(نسعى لمبادئ سامية أركانها)، ما إعراب أركانها؟
+                                </h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q19a1"> الفاعل</label>
+                                <input name="q19" id="q19a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q19a2"> مضاف اليه</label>
+                                <input data-answer="true" name="q19" id="q19a2" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q19a3"> مفعول بيه </label>
+                                <input name="q19" id="q19a3" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q19a4"> نائب فاعل </label>
+                                <input name="q19" id="q19a4" type="radio">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="cok-sm-12 col-md-12 col-lg-10  ">
+                    <div class="card border-none mb-3 w-100 shadow pb-4 bg-light">
+                        <div class="question px-5 ">
+                            <div class="question-part card-title text-right">
+                                <p class="quistion-number card-title h4 py-3 text-dark">السؤال العشرون</p>
+                                <h3 class="quistion-name  text-dark py-2 h5">(هو شخص مشهورة كتبه)، ما إعراب كتبه؟</h3>
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto ">
+                                <label for="q20a1"> الفاعل</label>
+                                <input name="q20" id="q20a1" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q20a2"> مضاف اليه</label>
+                                <input name="q20" id="q20a2" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q20a3"> مفعول بيه </label>
+                                <input name="q20" id="q20a3" type="radio">
+                            </div>
+                            <div class="answer card-text text-right bg-secondary text-light rounded-pill py-2 px-4 my-1 w-75 ml-auto">
+                                <label for="q20a4"> نائب فاعل </label>
+                                <input data-answer="true" name="q20" id="q20a4" type="radio">
+                            </div>
+                        </div>
+                    </div>
+                    <button id="Answerbtn" class="btn btn-info w-100 py-3  my-4" >إرسال الإجابات</button>
+    
+                </div>
+        
+    
+            </div>
+        </div>
+   
+    <!-- footer -->
+     
+    <footer class="text-center text-white" style="background:url('https://images.unsplash.com/photo-1592278423578-4b83c89859ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80'),
+    linear-gradient(to right bottom,#eeefff,black);background-size: cover; background-position-y: center;background-blend-mode: overlay;">
+        <div class="container p-4 pb-0">
+            <h3 class="text-dark">تواصل معنا</h3>
+          <section class="mb-4">
+            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-google"></i>
+            </a>
+            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-instagram"></i>
+            </a>
+          </section>
+        </div>
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: #eeefff;">
+            <p class="text-dark">جميع الحقوق محفوظة &copy; رحيق النحو
+            </p>
+        </div>
+    </footer>
+
+          <a href="#go" id="goUp"><i class="fas fa-arrow-alt-circle-up"></i>
+          </a>
+    </div>
+
+
+    <!-- *************************************************** -->
+    <!-- quiz part  -->
+    <!-- <div class="quiz-area"> -->
+    <!-- <div class="quiz-container">
+        <div class="quiz-info">
+            <h2 class="quiz-title">امتحان المحاضرةالرابعة </h2>
+            <p class="quiz-length">عدد الأسئلة عشرون سؤالا</p>
+            <h2 id="resultContent" class="hide result">النتيجة <span id="result">۲۰</span> من <span id="fulldegree"> ۲۰</span></h2>
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۱</span>
+                <h3 class="quistion-name">(ليتما ابنك مجتهد)، ما إعراب ابنك؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q1" id="q1a1" type="radio">
+                <label for="q1a1">مبتدأ</label>
+            </div>
+            <div class="answer">
+                <input name="q1" id="q1a2" type="radio">
+                <label for="q1a2">اسم ليت</label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q1" id="q1a3" type="radio">
+                <label for="q1a3">كلاهما</label>
+            </div>
+
+        </div>
+
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۲</span>
+                <h3 class="quistion-name">(ليتما أباك يعود)، ما إعراب أباك؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q2" id="q2a1" type="radio">
+                <label for="q2a1">مبتدأ</label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q2" id="q2a2" type="radio">
+                <label for="q2a2">اسم ليت</label>
+            </div>
+            <div class="answer">
+                <input name="q2" id="q2a3" type="radio">
+                <label for="q2a3">كلاهما</label>
+            </div>
+
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۳</span>
+                <h3 class="quistion-name">(إن البيت فيه لوحات جميلة)، ما إعراب لوحات؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q3" id="q3a1" type="radio">
+                <label for="q3a1">خبر إن</label>
+            </div>
+            <div class="answer">
+                <input name="q3" id="q3a2" type="radio">
+                <label for="q3a2">مضاف إليه</label>
+            </div>
+            <div class="answer">
+                <input name="q3" id="q3a3" type="radio">
+                <label for="q3a3">خبر  </label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q3" id="q3a4" type="radio">
+                <label for="q3a4">  مبتدأ  </label>
+            </div>
+        </div>
+
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">٤</span>
+                <h3 class="quistion-name">(لعل حلمك قريب موعده)، ما إعراب قريب؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q4" id="q4a1" type="radio">
+                <label for="q4a1"> خبر مقدم</label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q4" id="q4a2" type="radio">
+                <label for="q4a2"> خبر لعل</label>
+            </div>
+            <div class="answer">
+                <input name="q4" id="q4a3" type="radio">
+                <label for="q4a3">نعت</label>
+            </div>
+            <div class="answer">
+                <input name="q4" id="q4a4" type="radio">
+                <label for="q4a4">حال</label>
+            </div>
+
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۵</span>
+                <h3 class="quistion-name">أي الكلمات الآتية صيغة منتهى جموع؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q5" id="q5a1" type="radio">
+                <label for="q5a1">مجالات </label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q5" id="q5a2" type="radio">
+                <label for="q5a2">مهام </label>
+            </div>
+            <div class="answer">
+                <input name="q5" id="q5a3" type="radio">
+                <label for="q5a3">صناعية</label>
+            </div>
+            <div class="answer">
+                <input name="q5" id="q5a4" type="radio">
+                <label for="q5a4">لا شيء مما سبق </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">٦</span>
+                <h3 class="quistion-name"> (ينبغي عليك أن تشاهد الشرح كله)، المصدر المؤول في محل؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q6" id="q6a1" type="radio">
+                <label for="q6a1">مفعول به</label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q6" id="q6a2" type="radio">
+                <label for="q6a2">فاعل</label>
+            </div>
+            <div class="answer">
+                <input name="q6" id="q6a3" type="radio">
+                <label for="q6a3"> مضاف إليه</label>
+            </div>
+            <div class="answer">
+                <input name="q6" id="q6a4" type="radio">
+                <label for="q6a4"> مبتدأ مؤخر</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۷</span>
+                <h3 class="quistion-name">(قلت لك كثيرا يا صديقي انك شخص مجتهد وستصل لا محالة)، همزة ان؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q7" id="q7a1" type="radio">
+                <label for="q7a1">مفتوحة</label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q7" id="q7a2" type="radio">
+                <label for="q7a2">مكسورة  </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۸</span>
+                <h3 class="quistion-name"> (لا مجتهدات راسبات)، ما إعراب مجتهدات؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q8" id="q8a1" type="radio">
+                <label for="q8a1">اسم لا مبني على الفتح في محل نصب</label>
+            </div>
+            <div class="answer">
+                <input name="q8" id="q8a2" type="radio">
+                <label for="q8a2">اسم لا منصوب</label>
+            </div>
+            <div class="answer">
+                <input name="q8" id="q8a3" type="radio">
+                <label for="q8a3">مبتدأ</label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q8" id="q8a4" type="radio">
+                <label for="q8a4">لا شيء مما سبق </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۹</span>
+                <h3 class="quistion-name">(بلا شك أنت ذكي)، ما إعراب شك؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q9" id="q9a1" type="radio">
+                <label for="q9a1">اسم لا مبني</label>
+            </div>
+            <div class="answer">
+                <input name="q9" id="q9a2" type="radio">
+                <label for="q9a2">مبتدأ </label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q9" id="q9a3" type="radio">
+                <label for="q9a3">اسم مجرور </label>
+            </div>
+            <div class="answer">
+                <input name="q9" id="q9a4" type="radio">
+                <label for="q9a4">اسم لا منصوب </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۱۰</span>
+                <h3 class="quistion-name">(لا بيننا مهمل ولا كسول)، ما إعراب مهمل؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q10" id="q10a1" type="radio">
+                <label for="q10a1"> اسم لا مبني</label>
+            </div>
+            <div class="answer">
+                <input name="q10" id="q10a2" type="radio">
+                <label for="q10a2">مضاف إليه</label>
+            </div>
+            <div class="answer">
+                <input name="q10" id="q10a3" type="radio">
+                <label for="q10a3">اسم لا منصوب </label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q10" id="q10a4" type="radio">
+                <label for="q10a4">مبتدأ مؤخر  </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۱۱</span>
+                <h3 class="quistion-name">(لا الأمر مستحيل ولا يعجزك) ما إعراب الأمر؟</h3>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q11" id="q11a1" type="radio">
+                <label for="q11a1"> مبتدأ </label>
+            </div>
+            <div class="answer">
+                <input name="q11" id="q11a2" type="radio">
+                <label for="q11a2">اسم لا مبني </label>
+            </div>
+            <div class="answer">
+                <input name="q11" id="q11a3" type="radio">
+                <label for="q11a3">اسم لا منصوب  </label>
+            </div>
+            <div class="answer">
+                <input name="q11" id="q11a4" type="radio">
+                <label for="q11a4">لا شيء مما سبق </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۱۲</span>
+                <h3 class="quistion-name">(لا مذموما خلقه محبوب ولا مقبول)، ما نوع اسم لا؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q12" id="q12a1" type="radio">
+                <label for="q12a1">مضاف</label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q12" id="q12a2" type="radio">
+                <label for="q12a2">شبيه بالمضاف </label>
+            </div>
+            <div class="answer">
+                <input name="q12" id="q12a3" type="radio">
+                <label for="q12a3">مفرد </label>
+            </div>
+            <div class="answer">
+                <input name="q12" id="q12a4" type="radio">
+                <label for="q12a4">لا غير عاملة </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۱۳</span>
+                <h3 class="quistion-name">(اجتهد ليكون حلمك)، ما إعراب حلمك؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q13" id="q13a1" type="radio">
+                <label for="q13a1">اسم يكون</label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q13" id="q13a2" type="radio">
+                <label for="q13a2">فاعل</label>
+            </div>
+            <div class="answer">
+                <input name="q13" id="q13a3" type="radio">
+                <label for="q13a3">خبر يكون</label>
+            </div>
+
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۱٤</span>
+                <h3 class="quistion-name">(اشتريت قلما لا أكثر), ما إعراب أكثر؟</h3>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q14" id="q14a1" type="radio">
+                <label for="q14a1">معطوف</label>
+            </div>
+            <div class="answer">
+                <input name="q14" id="q14a2" type="radio">
+                <label for="q14a2">اسم لا</label>
+            </div>
+            <div class="answer">
+                <input name="q14" id="q14a3" type="radio">
+                <label for="q14a3">مبتدأ</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۱۵</span>
+                <h3 class="quistion-name">(هؤلاء أولاد كلهم أمل للمستقبل)، ما إعراب كلهم؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q15" id="q15a1" type="radio">
+                <label for="q15a1">توكيد</label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q15" id="q15a2" type="radio">
+                <label for="q15a2">مبتدأ</label>
+            </div>
+            <div class="answer">
+                <input name="q15" id="q15a3" type="radio">
+                <label for="q15a3">خبر</label>
+            </div>
+            <div class="answer">
+                <input name="q15" id="q15a4" type="radio">
+                <label for="q15a4">نعت </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۱٦</span>
+                <h3 class="quistion-name">(لا طالبين العلم مهملون)، ما إعراب العلم؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q16" id="q16a1" type="radio">
+                <label for="q16a1">مضاف إليه </label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q16" id="q16a2" type="radio">
+                <label for="q16a2">مفعول به </label>
+            </div>
+            <div class="answer">
+                <input name="q16" id="q16a3" type="radio">
+                <label for="q16a3">فاعل </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۱۷</span>
+                <h3 class="quistion-name">أي الكلمات التالية هو مصدر خماسي؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q17" id="q17a1" type="radio">
+                <label for="q17a1"> تقديم </label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q17" id="q17a2" type="radio">
+                <label for="q17a2">تقدم </label>
+            </div>
+            <div class="answer">
+                <input name="q17" id="q17a3" type="radio">
+                <label for="q17a3">إقدام </label>
+            </div>
+            <div class="answer">
+                <input name="q17" id="q17a4" type="radio">
+                <label for="q17a4">قدوم </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۱۸</span>
+                <h3 class="quistion-name">(جاء أحمد مع محمود)، ما إعراب مع؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q18" id="q18a1" type="radio">
+                <label for="q18a1">حرف جر </label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q18" id="q18a2" type="radio">
+                <label for="q18a2"> ظرف منصوب </label>
+            </div>
+            <div class="answer">
+                <input name="q18" id="q18a3" type="radio">
+                <label for="q18a3"> حال منصوب </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۱۹</span>
+                <h3 class="quistion-name">(لا بد من إنشاء امتحان لتقيم مستواك)، ما إعراب (بد)؟</h3>
+            </div>
+            <div class="answer">
+                <input name="q19" id="q19a1" type="radio">
+                <label for="q19a1">اسم لا منصوب وعلامة نصبه الفتحة</label>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q19" id="q19a2" type="radio">
+                <label for="q19a2">اسم لا مبني على الفتح في محل نصب </label>
+            </div>
+            <div class="answer">
+                <input name="q19" id="q19a3" type="radio">
+                <label for="q19a3">مبتدأ مرفوع وعلامة رفعه الضمة </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-part">
+                <span class="quistion-number">۲۰</span>
+                <h3 class="quistion-name">نكشف عن (بد) في مادة؟</h3>
+            </div>
+            <div class="answer">
+                <input data-answer="true" class="right" name="q20" id="q20a1" type="radio">
+                <label for="q20a1">بدد</label>
+            </div>
+            <div class="answer">
+                <input name="q20" id="q20a2" type="radio">
+                <label for="q20a2">بدّ</label>
+            </div>
+            <div class="answer">
+                <input name="q20" id="q20a3" type="radio">
+                <label for="q20a3">بدي</label>
+            </div>
+            <div class="answer">
+                <input name="q20" id="q20a4" type="radio">
+                <label for="q20a4">بدو </label>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="button">
+            <input id="Answerbtn" type="button" value="إرسال الإجابات">
+        </div>
+    </div>
+
+
+    <script src="./scripts/back/quiz.js"></script> -->
+    <script src="./scripts/back/quiz.js"></script>
+</body>
+
+</html>

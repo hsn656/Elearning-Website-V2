@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رحيق النحو | كل ما تريد تعلمه عن النحو</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <!-- Css Font links -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <!-- font awesome library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <!-- css style file -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- css style link  -->
+    <link rel="stylesheet" href="css/payment.css">
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-storage.js"></script>
+    <script src="./scripts/back/init.js"></script>
+
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+</head>
+
+<body>
+    <script src="https://js.stripe.com/v3"></script>
+
+    <div id="loader"></div>
+    <div id="go"></div>
+    <div class="afterloader">
+        <!-- The Header part  -->
+        <nav style="background-color: #eeefff;" dir="rtl" class="navbar fixed-top navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./index.html">
+                    <img style="width: 105px;" id="personal" src="./images/public/logo.png">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+                <div class="collapse navbar-collapse mr-4" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-4 ml-auto" style="padding: 0;">
+                        <li class="nav-item active ml-4"> <a class="nav-link" href="./index.html">الصفحة الرئيسية <span class="sr-only">(current)</span></a></li>
+                        <li class="nav-item ml-4"> <a class="nav-link" href="./index.html#lessonsData"> تصفح دروسنا</a></li>
+                        <li class="nav-item ml-4"> <a class="nav-link" href="./index.html#courseData">دوراتنا</a></li>
+                        <li id="ifAuthenticated" class="nav-item ml-4"><a class="nav-link" href="./QA.html">الأسئلة</a></li>
+                    </ul>
+                    <div id="adding"></div>
+                </div>
+            </div>
+
+        </nav>
+
+        <!-- <div class="container">
+            <h1>أنواع الاشتراكات</h1>
+            <div class="row">
+              <div class="subscription col-lg-6 col-sm-12 ml-4">
+                <h1>الاشتراك السنوي</h1>
+                <p>يتيح لك الاشتراك السنوي ما يلي</p>
+                <div class="fit">
+                  <ul id="list">
+                    <li>مشاهدة درس معين ترغب به</li>
+                    <li>الدخول في دورة تدريبية محددة</li>
+                    <li>المتابعة الدورية</li>
+                    <li>التعليق والتغذية العكسية</li>
+                  </ul>
+                </div>
+                <div class="button">
+  
+                  <button id="subButton">الاشتراك 200LE</button>
+                </div>
+              </div>
+              <div class="subscription col-lg-6 col-sm-12">
+                <h1>الاشتراك المجاني</h1>
+                <p>يتيح لك الاشتراك المجاني ما يلي</p>
+                <div class="fit">
+                  <ul id="list">
+                    <li>التصفح</li>
+                    <li>البحث</li>
+                    <li>اعطاء بعض المعلومات عن الاشتراك في المحتوى</li>
+                  </ul>
+                </div>
+              </div>
+          </div>
+          <div style="width: 5%;" class="container">
+            <a href="./index.html">ليس الآن</a>
+        </div>
+        </div> -->
+        <div class="container " style="margin-top: 6em;">
+            <h2 class="subscription-types">أنواع الاشتراكات</h2>
+        </div>
+        <div class="row container justify-content-center" style="margin:auto">
+            <div class="subscription col-md-5 col-sm-10">
+                <h2 class="text-center py-2 h2">الاشتراك السنوي</h2>
+                <p class="text-right font-weight-bolder h5">يتيح لك الاشتراك السنوي ما يلي</p>
+                <ul class="text-right list">
+                    <li class="pt-2">مشاهدة درس معين ترغب به</li>
+                    <li class="pt-2">الدخول في دورة تدريبية محددة</li>
+                    <li class="pt-2">المتابعة الدورية</li>
+                    <li class="pt-2">التعليق والتغذية العكسية</li>
+                </ul>
+                <div class="button">
+                    <button id="subButton">الاشتراك 200LE</button>
+                </div>
+            </div>
+
+            <div class="subscription col-md-5 col-sm-10">
+                <h2 class="text-center py-2 h2">الاشتراك المجاني</h2>
+                <p class="text-right font-weight-bolder h5">يتيح لك الاشتراك المجاني ما يلي</p>
+                <div class="text-right">
+                    <ul class="text-right list">
+                        <li class="pt-2">البحث</li>
+                        <li class="pt-2">التصفح</li>
+                        <li class="pt-2">قراءة الدروس المكتوبة</li>
+                        <li class="pt-2">القدرة على المشاركة في الأسئلة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="not-now mt-4 w-50">
+            <button><a href="./index.html">ليس الآن</a></button>
+        </div>
+
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p class="text-center">يمكنك الدفع عن طريق</p>
+                <div style="width: 80%;display: flex;margin: auto;">
+                    <button style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em; cursor: pointer;" id="checkout-button-price_1IntfiGcjcfOhHWOq9J3i3Fw" role="link" type="button">
+                الدفع عن طريق بطاقة
+              </button>
+
+                    <div id="error-message"></div>
+
+                    <div id="paypal-button"></div>
+                </div>
+            </div>
+
+        </div>
+        <!-- ---------------------------------------------------------------------- -->
+        <!-- footer -->
+
+        <footer class="text-center text-white" style="background:url('https://images.unsplash.com/photo-1592278423578-4b83c89859ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80'),
+linear-gradient(to right bottom,#eeefff,black);background-size: cover; background-position-y: center;background-blend-mode: overlay;">
+            <div class="container p-4 pb-0">
+                <h3 class="text-dark">تواصل معنا</h3>
+                <section class="mb-4">
+                    <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </section>
+            </div>
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: #eeefff;">
+                <p class="text-dark">جميع الحقوق محفوظة &copy; رحيق النحو
+                </p>
+            </div>
+        </footer>
+
+    </div>
+    <script src="./scripts/back/payment.js"></script>
+</body>
+
+</html>

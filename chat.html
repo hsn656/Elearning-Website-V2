@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-storage.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-functions.js"></script> -->
+    <script src="./scripts/back/init.js"></script>
+    <link rel="stylesheet" href="./css/chat.css">
+    <title>رحيق النحو | كل ما تريد تعلمه عن النحو</title>
+</head>
+
+<body>
+    <div id="loader"></div>
+    <div id="go"></div>
+    <div class="afterloader">
+        <!-- The Header part  -->
+        <nav style="background-color: #eeefff;" dir="rtl" class="navbar fixed-top navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./index.html">
+                    <img style="width: 105px;cursor: pointer;" id="personal" src="./images/public/logo.png">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse mr-4" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-4 ml-auto">
+                        <li class="nav-item active ml-4"> <a class="nav-link" href="./index.html">الصفحة الرئيسية <span
+                                    class="sr-only">(current)</span></a></li>
+                        <li class="nav-item ml-4"> <a class="nav-link" href="./index.html#lessonsData"> تصفح دروسنا</a>
+                        </li>
+                        <li class="nav-item ml-4"> <a class="nav-link" href="./index.html#courseData">دوراتنا</a></li>
+                        <li id="ifAuthenticated" class="nav-item ml-4"><a class="nav-link" href="./QA.html">الأسئلة</a></li>
+                    </ul>
+                    <div id="adding"></div>
+                </div>
+            </div>
+
+        </nav>
+        <div class="container">
+            <script>
+                (function(t, a, l, k, j, s) {
+                    s = a.createElement('script');
+                    s.async = 1;
+                    s.src = "https://cdn.talkjs.com/talk.js";
+                    a.head.appendChild(s);
+                    k = t.Promise;
+                    t.Talk = {
+                        v: 3,
+                        ready: {
+                            then: function(f) {
+                                if (k) return new k(function(r, e) {
+                                    l.push([f, r, e])
+                                });
+                                l
+                                    .push([f])
+                            },
+                            catch: function() {
+                                return k && new k()
+                            },
+                            c: l
+                        }
+                    };
+                })(window, document, []);
+            </script>
+
+            <!-- container element in which TalkJS will display a chat UI -->
+            <div id="talkjs-container" style="width: 90%; margin: 100px 30px; height: 500px">
+                <i>Loading chat...</i>
+            </div>
+            <script>
+                Talk.ready.then(function() {
+                    var host = JSON.parse(localStorage.getItem('host'))
+                    const me = new Talk.User({
+                        id: host.id,
+                        name: host.name,
+                        email: host.user_email,
+                        photoUrl: host.photo,
+                        locale: host.locale
+                    });
+
+                    window.talkSession = new Talk.Session({
+                        appId: "tAVmni4W",
+                        me: me,
+                    });
+
+
+
+                    var guest = JSON.parse(localStorage.getItem('guest'));
+
+                    const other = new Talk.User({
+                        id: guest.id,
+                        name: guest.name,
+                        email: guest.user_email,
+                        photoUrl: guest.photo,
+                    });
+                    var conversation = talkSession.getOrCreateConversation(
+                        Talk.oneOnOneId(me, other)
+                    );
+                    conversation.setParticipant(me);
+                    conversation.setParticipant(other);
+
+                    var inbox = talkSession.createInbox({
+                        selected: conversation
+                    });
+                    inbox.mount(document.getElementById("talkjs-container"));
+                    // document.getElementsByClassName("NoticeBar")[0].style.display = "none"
+                });
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

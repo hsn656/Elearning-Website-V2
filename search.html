@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="keywords" content="">
+    <meta name="descrption" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>رحيق النحو | كل ما تريد تعلمه عن النحو</title>
+    <!-- Css Font links -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <!-- font awesome library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- css style link  -->
+    <link rel="stylesheet" href="css/search.css">
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-storage.js"></script>
+    <script src="./scripts/back/init.js"></script>
+</head>
+
+<body>
+    <div id="loader"></div>
+    <div id="go"></div>
+    <div class="afterloader">
+        <nav style="background-color: #eeefff;" dir="rtl" class="navbar fixed-top navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./index.html">
+                    <img style="width: 105px;" id="personal" src="./images/public/logo.png">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="collapse navbar-collapse mr-4" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-4 ml-auto">
+                        <li class="nav-item active ml-4"> <a class="nav-link" href="./index.html">الصفحة الرئيسية <span class="sr-only">(current)</span></a></li>
+                        <li class="nav-item ml-4"> <a class="nav-link" href="./index.html#lessonsData"> تصفح دروسنا</a></li>
+                        <li class="nav-item ml-4"> <a class="nav-link" href="./index.html#courseData">دوراتنا</a></li>
+                        <li id="ifAuthenticated" class="nav-item ml-4"><a class="nav-link" href="./QA.html">الأسئلة</a></li>
+                    </ul>
+                    <div id="adding"></div>
+                </div>
+            </div>
+
+        </nav>
+        <!-- The Header part  -->
+
+
+        <div class="container-fluid  containerStyle text-center ">
+            <h1>اهلا بك .. كيف نساعدك ؟</h1>
+            <div class="search-cotainer mt-4">
+                <form action="">
+                    <input onkeypress="exec_this(event)" type="text" placeholder="اكتب هنا ما تريد البحث عنه .." name="search" id="search" class="text-search">
+                    <button type="submit" class="searchBtn">
+                            <i class="fa fa-search"></i>
+                        </button>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="courses">
+            <div class="container">
+                <div class="row trending-courses">
+                    <!-- <div class="col-sm-6 col-lg-4">
+                            <div class="card m-3 py-3 text-center"
+                                style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                
+                                <img src="c1l4.jpg" class="m-auto">
+                                
+                                <h3 class="pb-2 ">الدرس الاول</h3>
+                                <div class="layer">
+                                    <a href="#" class="btn btn-block">
+                                        ابدأ الآن
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="card m-3 py-3 text-center"
+                                style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                
+                                <img src="c1l4.jpg" class="m-auto">
+                                
+                                <h3 class="pb-2 ">الدرس الاول</h3>
+                                <div class="layer">
+                                    <a href="#" class="btn btn-block">
+                                        ابدأ الآن
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="card m-3 py-3 text-center"
+                                style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                
+                                <img src="c1l4.jpg" class="m-auto">
+                                
+                                <h3 class="pb-2 ">الدرس الاول</h3>
+                                <div class="layer">
+                                    <a href="#" class="btn btn-block">
+                                        ابدأ الآن
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="card m-3 py-3 text-center"
+                                style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                
+                                <img src="c1l4.jpg" class="m-auto">
+                                
+                                <h3 class="pb-2 ">الدرس الاول</h3>
+                                <div class="layer">
+                                    <a href="#" class="btn btn-block">
+                                        ابدأ الآن
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="card m-3 py-3 text-center"
+                                style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                
+                                <img src="c1l4.jpg" class="m-auto">
+                                
+                                <h3 class="pb-2 ">الدرس الاول</h3>
+                                <div class="layer">
+                                    <a href="#" class="btn btn-block">
+                                        ابدأ الآن
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="card m-3 py-3 text-center"
+                                style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                
+                                <img src="c1l4.jpg" class="m-auto">
+                                
+                                <h3 class="pb-2 ">الدرس الاول</h3>
+                                <div class="layer">
+                                    <a href="#" class="btn btn-block">
+                                        ابدأ الآن
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="card m-3 py-3 text-center"
+                                style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                
+                                <img src="c1l4.jpg" class="m-auto">
+                                
+                                <h3 class="pb-2 ">الدرس الاول</h3>
+                                <div class="layer">
+                                    <a href="#" class="btn btn-block">
+                                        ابدأ الآن
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="card m-3 py-3 text-center"
+                                style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                
+                                <img src="c1l4.jpg" class="m-auto">
+                                
+                                <h3 class="pb-2 ">الدرس الاول</h3>
+                                <div class="layer">
+                                    <a href="#" class="btn btn-block">
+                                        ابدأ الآن
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="card m-3 py-3 text-center"
+                                style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                
+                                <img src="c1l4.jpg" class="m-auto">
+                                
+                                <h3 class="pb-2 ">الدرس الاول</h3>
+                                <div class="layer">
+                                    <a href="#" class="btn btn-block">
+                                        ابدأ الآن
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="card m-3 py-3 text-center"
+                                style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                
+                                <img src="c1l4.jpg" class="m-auto">
+                                
+                                <h3 class="pb-2 ">الدرس الاول</h3>
+                                <div class="layer">
+                                    <a href="#" class="btn btn-block">
+                                        ابدأ الآن
+                                    </a>
+                                </div>
+                            </div>
+                        </div> -->
+                </div>
+            </div>
+        </div>
+
+
+        <!-- footer -->
+
+        <footer class="text-center text-white" style="background:url('https://images.unsplash.com/photo-1592278423578-4b83c89859ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80'),
+    linear-gradient(to right bottom,#eeefff,black);background-size: cover; background-position-y: center;background-blend-mode: overlay;">
+            <div class="container p-4 pb-0">
+                <h3 class="text-dark">تواصل معنا</h3>
+                <section class="mb-4">
+                    <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </section>
+            </div>
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: #eeefff;">
+                <p class="text-dark">جميع الحقوق محفوظة &copy; رحيق النحو
+                </p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="scripts/back/search.js"></script>
+    <script>
+        let btn = document.getElementById("orderBy");
+        let list = document.querySelectorAll(".order-list")[0];
+        let a = 0;
+        let orderBy;
+        for (let i = 1; i <= list.childElementCount; i++) {
+
+            list.childNodes[i + a++].onclick = function() {
+                btn.innerHTML = this.innerHTML;
+                list.style.display = "none"
+                orderBy = this.innerHTML
+            }
+        }
+
+        btn.onclick = function() {
+            if (list.style.display == "block")
+                list.style.display = "none";
+            else {
+                list.style.display = "block";
+
+            }
+        };
+    </script>
+    <script>
+        (function() {
+            if (decodeURI(location.search.split('=')[1]) !== "undefined")
+                document.getElementById("search").value = decodeURI(location.search.split('=')[1])
+            else
+                document.getElementById("search").value = ""
+            test_me(decodeURI(location.search.split('=')[1]) !== "undefined" ? decodeURI(location.search.split('=')[1]) : "")
+        })()
+
+        function exec_this(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementsByClassName("trending-courses")[0].innerHTML = ""
+                test_me(event.target.value, orderBy);
+                // document.getElementById("search-result").innerHTML = document.getElementsByClassName("t-course").length;
+
+            }
+        }
+    </script>
+</body>
+
+</html>

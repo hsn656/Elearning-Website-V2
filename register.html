@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رحيق النحو | التسجيل</title>
+    <!-- Css Font links -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500&display=swap" rel="stylesheet">
+   <!-- font awesome library -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ 
+    <!-- css style file -->
+    <link rel="stylesheet" href="css/register style.css">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-storage.js"></script>
+    <script src="./scripts/back/init.js"></script>
+</head>
+
+<body>
+    <div id="loader"></div>
+    <div id="go"></div>
+    <div class="afterloader">
+        <div class="container-fluid">
+            <div style="height: 100vh;" class="row p-0">
+                <div class="col-lg-5 border-info bg-light">
+                    <div class="card-body">
+                        <h4 class="title text-center mt-4 ">
+                            أنضم لنا
+                        </h4>
+                        <div class="form-box px-3">
+                            <div class="form-input">
+                                <span><i class="fa fa-user"></i></span>
+                                <input id="firstName" type="text" name="FirstName" placeholder="الاسم الاول" required>
+        
+                            </div>
+                            <div class="form-input">
+                                <span><i class="fa fa-user"></i></span>
+                                <input id="lastName" type="text" name="LastName" placeholder="اسم العائله" required>
+        
+                            </div>
+                            <div class="form-input">
+                                <span><i class="fas fa-envelope"></i></span>
+                                <input id="txtEmail" type="email" name="email" placeholder="البريد الالكترونى" required>
+        
+                            </div>
+                            <div class="form-input">
+                                <span><i class="fa fa-phone"></i></span>
+                                <input id="phone" type="text" name="phone" placeholder="رقم الهاتف" required>
+        
+                            </div>
+                            <div class="form-input">
+                                <span><i class="fa fa-key"></i></span>
+                                <input id="txtPassword" type="password" name="password" placeholder="كلمه المرور" required>
+        
+                            </div>
+                            <div class="form-input">
+                                <span><i class="fa fa-key"></i></span>
+                                <input id="confirmPassword" type="password" name="password" placeholder="تأكيد كلمه المرور" required>
+                                <span id='message'></span>
+                            </div>
+                            <div class="mb-3">
+                                <div class="cotainer custom-radio pr-4">
+                                    <label class="radio-inline p-1 mr-3 ">
+                                        <input type="radio" value="ذكر" name="gender" class="p-1">ذكر
+                                    </label>
+                                    <label class="radio-inline p-1 mr-3">
+                                        <input type="radio" value="انثى" name="gender">أنثى
+                                    </label>
+        
+                                </div>
+                            </div>
+        
+                            <div class="mb-3">
+                                <button id="regBtn" type="submit" class="btn btn-block text-uppercase">
+                                    تسجيل الآن
+                                </button>
+                                <span id='error' style="display: block;" class="text-center"></span>
+                            </div>
+        
+                            
+                            <hr class="my-4">
+        
+                            <div class="text-center mb-2">
+                                لديك حساب بالفعل!
+                                <a href="./login.html" class="register-link">
+                                    قم بتسجيل الدخول هنا
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7  text-center  m-auto con">
+                    <a style="display: block;width: 60%;margin: auto;" href="./index.html">
+                        <img style="width: 300px;" id="personal" src="./images/public/logo.png">
+                    </a>
+                    علم النحو من علوم اللغة العربية ويعد العلم الأهم بينها، معرفته ضرورية على أهل الشريعة إذ مأخذ
+                    الأحكام الشرعية كلها من الكتاب والسنة، وتعلم لمن أراد علم الشريعة.
+        
+                    والنحو هو انتحاء سمت كلام العرب في تصرفه من إعراب وغيره: كالتثنية، والجمع، والتحقير والتكسير
+                    والإضافة والنسب، والتركيب، وغير ذلك، ليلحق من ليس من أهل اللغة العربية بأهلها في الفصاحة فينطق بها
+                    وإنْ لم يكن منهم، وإنْ شذ بعضهم عنها رد به إليها. وهو في الأصل مصدر شائع، أي نحوت نحوًا، كقولك قصدت
+                    قصدًا، ثم خصّ به انتحاء هذا القبيل من العلم" (الجزء الأول – صفحة 34)، فالنحو عند ابن جني على هذا هو:
+                    محاكاة العرب في طريقة كلمهم تجنبًا للّحن، وتمكينًا للمستعرب في أن يكون كالعربيّ في فصاحته وسلامة
+                    لغته عند الكلام.
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="scripts/front/register.js"></script>
+</body>
+
+</html>
